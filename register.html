@@ -101,7 +101,7 @@
               <label
                 for="name"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Your name</label
+                >Your name <span class="text-red-500">*</span></label
               >
               <input
                 type="text"
@@ -116,7 +116,7 @@
               <label
                 for="email"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Your email</label
+                >Your email <span class="text-red-500">*</span></label
               >
               <input
                 type="email"
@@ -131,7 +131,7 @@
               <label
                 for="password"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Your password</label
+                >Your password <span class="text-red-500">*</span></label
               >
               <input
                 type="password"
@@ -146,7 +146,7 @@
               <label
                 for="conf_password"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Confirm password</label
+                >Confirm password <span class="text-red-500">*</span></label
               >
               <input
                 type="password"
@@ -286,6 +286,8 @@
             </div>
           </form>
         </div>
+
+        <!-- form change script -->
         <script>
           const voterBtn = document.getElementById("reg-voter");
           const orgBtn = document.getElementById("reg-org");

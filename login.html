@@ -26,6 +26,16 @@
             fontFamily: {
               belanosima: ["Belanosima", "sans-serif"],
             },
+            keyframes: {
+              upDown: {
+                "0% , 50% , 100%": { transform: "translateY(0)" },
+                "25%": { transform: "translateY(-20px)" },
+                "75%": { transform: "translateY(20px)" },
+              },
+            },
+            animation: {
+              upDown: "upDown 4s linear infinite",
+            },
           },
         },
       };
@@ -49,7 +59,7 @@
         <img
           src="./resouces/login.svg"
           alt="login"
-          class="hidden w-96 h-fit lg:block xl:w-[26rem] 2xl:w-[30rem]"
+          class="hidden w-96 h-fit lg:block xl:w-[26rem] 2xl:w-[30rem] animate-upDown"
         />
         <!-- login card -->
         <div

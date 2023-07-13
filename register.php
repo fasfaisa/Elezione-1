@@ -5,43 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Elezione | Easy Voting Solution</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- google icons -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-
-    <!-- google fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Kumbh+Sans&display=swap"
-      rel="stylesheet"
-    />
-
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              belanosima: ["Belanosima", "sans-serif"],
-            },
-            keyframes: {
-              upDown: {
-                "0% , 50% , 100%": { transform: "translateY(0)" },
-                "25%": { transform: "translateY(-20px)" },
-                "75%": { transform: "translateY(20px)" },
-              },
-            },
-            animation: {
-              upDown: "upDown 4s linear infinite",
-            },
-          },
-        },
-      };
-    </script>
+      <!-- include common data php file-->
+      <?php include_once "components/common.php" ?>
   </head>
-
   <body class="bg-gray-100">
     <div
       class="h-auto min-h-screen flex py-10 justify-center items-center bg-gradient-to-br from-teal-800 to-lime-300"
@@ -168,7 +135,7 @@
             </button>
             <div class="text-sm font-medium text-gray-500">
               Already registered?
-              <a href="/login.html" class="text-blue-700 hover:underline"
+              <a href="/login.php" class="text-blue-700 hover:underline"
                 >Login account</a
               >
             </div>
@@ -266,7 +233,7 @@
 
             <!-- next button -->
             <p class="mb-4 mt-8 text-center italic text-emerald-700">
-              No need pay today. All accounts have 7 days free trial.
+              No need to pay today. All accounts have 7 days free trial.
             </p>
 
             <button
@@ -282,7 +249,7 @@
             <div class="text-sm font-medium text-gray-500">
               Already registered?
               <a
-                href="/login.html"
+                href="/login.php"
                 class="text-blue-700 hover:text-green-600 duration-200 ease-in"
                 >Login account</a
               >

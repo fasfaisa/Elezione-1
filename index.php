@@ -5,111 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Elezione | Easy Voting Solution</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- google icons -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
+      <!-- script for navigation bar control -->
+      <script src="js/header.js"></script>
 
-    <!-- google fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Kumbh+Sans&display=swap"
-      rel="stylesheet"
-    />
+      <!-- include common data php file-->
+      <?php include_once "components/common.php" ?>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              belanosima: ["Belanosima", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
   </head>
 
   <body class="bg-gray-100">
-    <!-- script for navigation bar control -->
-    <script>
-      let menuOpen = false;
-      const menuSettings = (e) => {
-        const MENU = document.getElementById("menu");
-        if (menuOpen) {
-          MENU.classList.remove("right-0");
-          MENU.classList.add("-right-80");
-          menuOpen = false;
-          e.target.innerHTML = "menu";
-        } else {
-          MENU.classList.remove("-right-80");
-          MENU.classList.add("right-0");
-          menuOpen = true;
-          e.target.innerHTML = "close";
-        }
-      };
-    </script>
-
-    <!-- Navigation -->
-    <header class="bg-purple-900 py-4 px-8 flex justify-center">
-      <div class="container mx-0 md:mx-auto flex justify-between items-center">
-        <a href="/">
-          <h1 class="text-3xl font-bold text-white font-belanosima">
-            Elezione
-          </h1>
-        </a>
-        <nav class="flex items-center">
-          <button onclick="menuSettings(event)" id="menu-btn" class="z-50">
-            <span class="material-symbols-outlined text-white md:hidden">
-              menu
-            </span>
-          </button>
-
-          <!-- header link area -->
-          <div
-            id="menu"
-            class="fixed -right-80 top-0 z-40 flex h-screen flex-col bg-blue-400 pe-4 ps-3 pt-10 duration-300 shadow-md shadow-slate-500 md:shadow-none md:relative md:right-0 md:h-auto md:flex-row md:bg-transparent md:pt-0"
-          >
-            <a
-              href="#"
-              class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
-              >Home</a
-            >
-
-            <a
-              href="#"
-              class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
-              >Pricing</a
-            >
-
-            <a
-              href="#"
-              class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
-              >About</a
-            >
-
-            <a
-              href="#"
-              class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
-              >Contact</a
-            >
-
-            <a
-              href="#"
-              class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
-              >FAQ</a
-            >
-          </div>
-        </nav>
-      </div>
-    </header>
+  <!-- Navigation -->
+  <?php
+  $color = "bg-purple-900";
+  include_once "components/header.php"
+  ?>
 
     <!-- Hero Section -->
     <section class="py-20 h-screen flex items-center z-0 relative">
       <img
-        src="./resouces/start-bg.jpeg"
+        src="resouces/start-bg.jpeg"
         alt="bg-image"
         class="absolute object-cover h-full w-full top-0 -z-50 opacity-90"
       />
@@ -126,7 +41,7 @@
         </p>
         <div class="flex justify-center">
           <a
-            href="register.html"
+            href="register.php"
             class="bg-blue-500 text-white py-3 px-8 rounded-lg shadow-lg hover:bg-emerald-500 transition-colors duration-300"
             >Get Started</a
           >
@@ -137,7 +52,7 @@
     <!-- Features Section -->
     <section class="py-20 relative">
       <img
-        src="./resouces/bg.svg"
+        src="resouces/bg.svg"
         alt="bg-image"
         class="absolute object-cover h-full w-full top-0 -z-50 opacity-80"
       />
@@ -199,7 +114,7 @@
         <!-- pricing org-->
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-5 mt-16"
-        >
+        id="pricing">
           Pricing
           <span class="font-belanosima text-sky-600 text-xl md:text-3xl"
             >for Organizations</span
@@ -241,7 +156,7 @@
                   >
                 </li>
               </ul>
-              <a href="register.html">
+              <a href="register.php">
                 <button
                   class="relative group mt-4 w-full self-center bg-transparent z-[0] text-blue-700 hover:text-white border-blue-700 border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-8 py-2 text-center overflow-hidden"
                 >
@@ -286,7 +201,7 @@
                   >
                 </li>
               </ul>
-              <a href="register.html">
+              <a href="register.php">
                 <button
                   class="relative group mt-4 w-full self-center bg-transparent z-[0] text-blue-700 hover:text-white border-blue-700 border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-8 py-2 text-center overflow-hidden"
                 >
@@ -333,7 +248,7 @@
                   >
                 </li>
               </ul>
-              <a href="register.html">
+              <a href="register.php">
                 <button
                   class="relative group mt-4 w-full self-center bg-transparent z-[0] text-blue-700 hover:text-white border-blue-700 border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-8 py-2 text-center overflow-hidden"
                 >
@@ -356,7 +271,7 @@
           >
         </h2>
         <div class="flex w-full justify-center">
-          <a href="register.html">
+          <a href="register.php">
             <button
               class="relative group mt-4 w-[10rem] bg-transparent z-[0] text-blue-700 hover:text-white border-blue-700 border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-8 py-2 text-center overflow-hidden"
             >
@@ -369,21 +284,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 pt-8">
-      <div class="flex flex-col md:flex-row justify-center items-center mb-5">
-        <h1 class="font-belanosima text-white text-3xl py-3 mx-10">Elezione</h1>
-        <a href="/privacy.html" class="text-white py-2 mx-4">Privacy</a>
-        <a href="/about.html" class="text-white py-2 mx-4">About</a>
-        <a href="/contact.html" class="text-white py-2 mx-4">Contact</a>
-        <a href="/terms.html" class="text-white py-2 mx-4">T&C</a>
-        <a href="/faq.html" class="text-white py-2 mx-4">FAQ</a>
-      </div>
-      <p
-        class="text-center text-white border-t border-slate-400 border-opacity-10 py-4"
-      >
-        © 2023 Elezione. All rights reserved.
-      </p>
-    </footer>
+  <!-- Footer -->
+  <?php include_once "components/footer.php" ?>
   </body>
 </html>

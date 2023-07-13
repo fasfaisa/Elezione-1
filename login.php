@@ -5,41 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elezione | Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- google icons -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
+    <!-- include common data php file-->
+    <?php include_once "components/common.php" ?>
 
-    <!-- google fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Belanosima&family=Kumbh+Sans&display=swap"
-      rel="stylesheet"
-    />
-
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              belanosima: ["Belanosima", "sans-serif"],
-            },
-            keyframes: {
-              upDown: {
-                "0% , 50% , 100%": { transform: "translateY(0)" },
-                "25%": { transform: "translateY(-20px)" },
-                "75%": { transform: "translateY(20px)" },
-              },
-            },
-            animation: {
-              upDown: "upDown 4s linear infinite",
-            },
-          },
-        },
-      };
-    </script>
   </head>
   <body class="bg-gray-100">
     <div
@@ -131,7 +100,7 @@
             </button>
             <div class="text-sm font-medium text-gray-500">
               Not registered?
-              <a href="/register.html" class="text-blue-700 hover:underline"
+              <a href="/register.php" class="text-blue-700 hover:underline"
                 >Create account</a
               >
             </div>

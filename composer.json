@@ -1,0 +1,17 @@
+{
+    "name": "kavindu/elezione",
+    "autoload": {
+        "psr-4": {
+            "Elezione\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kavindu Manahara",
+            "email": "cst20003@std.uwu.ac.lk"
+        }
+    ],
+    "require": {
+        "bramus/router": "~1.6"
+    }
+}

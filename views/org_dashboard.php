@@ -7,7 +7,7 @@
     <title>Elezione | Easy Voting Solution</title>
 
     <!-- script for navigation bar control -->
-    <script src="js/header.js"></script>
+    <script src="../js/header.js"></script>
 
     <!-- include common data php file-->
     <?php include_once "components/common.php" ?>
@@ -137,7 +137,7 @@
             <div class="self-start">
               <ul class="ms-5">
                 <li class="flex items-center space-x-3">
-                  <img src="./resouces/tick.svg" class="w-4 h-4" /><span
+                  <img src="resources/tick.svg" class="w-4 h-4" /><span
                     >Maximum vote count for voter : 1</span
                   >
                 </li>
@@ -303,8 +303,8 @@
 
     <!-- javascript area -->
     <!-- chart js -->
-    <script src="js/chart_js.js"></script>
+    <script src="../js/chart_js.js"></script>
     <!--  organization dashboard js-->
-    <script src="js/organization_dashboard.js" type="text/javascript"></script>
+    <script src="../js/organization_dashboard.js" type="text/javascript"></script>
   </body>
 </html>

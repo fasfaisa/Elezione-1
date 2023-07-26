@@ -10,7 +10,7 @@
         <?php include_once "components/common.php" ?>
 
         <!-- script for navigation bar control -->
-        <script src="js/header.js"></script>
+        <script src="../js/header.js"></script>
 
     </head>
 

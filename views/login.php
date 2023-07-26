@@ -26,7 +26,7 @@
       >
         <!-- login page image -->
         <img
-          src="./resouces/login.svg"
+          src="resources/login.svg"
           alt="login"
           class="hidden w-96 h-fit lg:block xl:w-[26rem] 2xl:w-[30rem] animate-upDown"
         />
@@ -100,7 +100,7 @@
             </button>
             <div class="text-sm font-medium text-gray-500">
               Not registered?
-              <a href="/register.php" class="text-blue-700 hover:underline"
+              <a href="/views/register.php" class="text-blue-700 hover:underline"
                 >Create account</a
               >
             </div>

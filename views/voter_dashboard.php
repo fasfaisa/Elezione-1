@@ -7,7 +7,7 @@
     <title>Elezione | Easy Voting Solution</title>
 
     <!-- script for navigation bar control -->
-    <script src="js/header.js"></script>
+    <script src="../js/header.js"></script>
 
     <!-- include common data php file-->
     <?php include_once "components/common.php" ?>
@@ -19,9 +19,13 @@
   <!-- Navigation -->
   <?php include_once "components/header.php" ?>
 
-    <div class="py-10">
+    <!-- change this area only : start -->
+    <div class="pb-10">
+      <div class="flex justify-end bg-gray-200 py-3 px-10 items-center">
+        <p class="text-xl font-belanosima">Peter Elwin</p>
+      </div>
       <div
-        class="grid gap-4 grid-cols-1 md:grid-cols-2 place-items-center px-4"
+        class="grid gap-4 grid-cols-1 md:grid-cols-2 place-items-center px-4 py-10"
       >
         <!-- basic settings -->
         <form
@@ -33,14 +37,14 @@
             <label
               for="name"
               class="block mb-2 text-sm font-medium text-gray-900"
-              >Organization name <span class="text-red-500">*</span></label
+              >Your name <span class="text-red-500">*</span></label
             >
             <input
               type="text"
               name="name"
               id="name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              value="ABC Dream Star"
+              value="Peter Elwin"
               required
             />
           </div>
@@ -48,14 +52,14 @@
             <label
               for="email"
               class="block mb-2 text-sm font-medium text-gray-900"
-              >Organization email <span class="text-red-500">*</span></label
+              >Your email <span class="text-red-500">*</span></label
             >
             <input
               type="email"
               name="email"
               id="email"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              value="dreamstart@abc.com"
+              value="peterelwin@abc.com"
               required
             />
           </div>
@@ -114,7 +118,7 @@
             class="space-y-6 p-4 sm:p-6 md:p-8 bg-white border-2 border-yellow-500 rounded-md w-full"
             action="#"
           >
-            <h5 class="text-xl font-medium text-gray-900">Advanced Details</h5>
+            <h5 class="text-xl font-medium text-gray-900">Change to Organization</h5>
             <div>
               <label
                 for="card-type"
@@ -180,6 +184,7 @@
         </div>
       </div>
     </div>
+    <!-- change this area only : end -->
 
   <!-- Footer -->
   <?php include_once "components/footer.php" ?>

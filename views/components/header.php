@@ -1,6 +1,4 @@
-<?php global $color; ?>
-
-<header class= "<?php echo $color === null ? 'bg-blue-500' : $color ?> py-4 px-8 flex justify-center">
+<header class= "<?php echo $color ?? 'bg-blue-500' ?> py-4 px-8 flex justify-center">
     <div class="container mx-0 md:mx-auto flex justify-between items-center">
         <a href="/">
             <h1 class="text-3xl font-bold text-white font-belanosima">
@@ -32,19 +30,19 @@
                 >
 
                 <a
-                    href="/about.php"
+                    href="/about"
                     class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
                 >About</a
                 >
 
                 <a
-                    href="/contact.php"
+                    href="/contact"
                     class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
                 >Contact</a
                 >
 
                 <a
-                    href="/faq.php"
+                    href="/faq"
                     class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-200 md:my-0 md:w-auto"
                 >FAQ</a
                 >

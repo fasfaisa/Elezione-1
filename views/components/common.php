@@ -5,4 +5,4 @@
 />
 
 <!--tailwind css stylesheet-->
-<link href="../../dist/output.css" rel="stylesheet">
+<link href="../../css/output.css" rel="stylesheet">

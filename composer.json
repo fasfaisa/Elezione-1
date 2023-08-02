@@ -12,6 +12,12 @@
         }
     ],
     "require": {
-        "bramus/router": "~1.6"
+        "bramus/router": "~1.6",
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.5"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     }
 }

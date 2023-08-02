@@ -47,8 +47,9 @@
               </button>
             </li>
           </ul>
+
           <!-- user registration -->
-          <form class="space-y-6 p-4 sm:p-6 md:p-8" action="#" id="voter-form">
+          <form class="space-y-6 p-4 sm:p-6 md:p-8" action="register_process" id="voter-form" method="post">
             <h5 class="text-xl font-medium text-gray-900">
               Register to
               <span class="font-belanosima text-2xl text-sky-600"
@@ -117,6 +118,8 @@
             </div>
             <button
               type="submit"
+              value="voter"
+              name="voter"
               class="relative group mt-4 w-full self-center bg-transparent z-[0] text-blue-700 hover:text-white border-blue-700 border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-8 py-2 text-center overflow-hidden"
             >
               Register to Elezione
@@ -135,8 +138,9 @@
           <!-- organization registration -->
           <form
             class="space-y-6 hidden p-4 sm:p-6 md:p-8"
-            action="#"
+            action="register_process"
             id="org-form"
+            method="post"
           >
             <h5 class="text-xl font-medium text-gray-900">
               Register to
@@ -229,6 +233,8 @@
 
             <button
               type="submit"
+              value="organization"
+              name="organization"
               class="relative group mt-4 w-full self-center bg-transparent z-[0] text-blue-700 hover:text-white border-blue-700 border-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-8 py-2 text-center overflow-hidden"
             >
               Register to Elezione

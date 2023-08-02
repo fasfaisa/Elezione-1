@@ -25,7 +25,8 @@
       <div
           class="w-11/12 md:ms-10 sm:w-[25] max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8"
         >
-          <form class="space-y-6" action="#">
+          <form class="space-y-6" action="login_process
+" method="post">
             <h5 class="text-xl font-medium text-gray-900">
               Sign in to
               <span class="font-belanosima text-2xl text-sky-600"
@@ -70,7 +71,7 @@
                     type="checkbox"
                     value=""
                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-                    required
+
                   />
                 </div>
                 <label

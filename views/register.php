@@ -9,29 +9,20 @@
       <!-- include common data php file-->
       <?php include_once "components/common.php" ?>
   </head>
-  <body class="bg-gray-100">
+  <body>
     <div
-      class="h-auto min-h-screen flex py-10 justify-center items-center bg-gradient-to-br from-teal-800 to-lime-300"
+      class="h-auto min-h-screen flex py-10 justify-center items-center bg-slate-300/70 flex-col"
     >
       <!-- logo -->
       <a href="/" class="absolute top-3 start-2 sm:start-3 md:start-4">
-        <h1 class="text-3xl font-bold md:text-4xl text-white font-belanosima">
+        <h1 class="text-3xl font-bold md:text-4xl text-slate-700 font-belanosima">
           Elezione
         </h1>
       </a>
 
-      <div
-        class="grid grid-cols-1 h-fit w-full py-10 place-items-center lg:grid-cols-2"
-      >
-        <!-- login page image -->
-        <img
-          src="resources/register.svg"
-          alt="login"
-          class="hidden w-96 h-fit lg:block xl:w-[26rem] 2xl:w-[30rem] animate-upDown"
-        />
-
+        <!--form div-->
         <div
-          class="w-11/12 md:ms-10 sm:w-[28rem] md:w-[30rem] max-w-lg bg-white border border-gray-200 rounded-lg shadow"
+          class="w-11/12 h-fit sm:w-[28rem] md:w-[30rem] max-w-lg bg-white border border-gray-200 rounded-lg shadow"
         >
           <ul
             class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50"
@@ -135,7 +126,7 @@
             </button>
             <div class="text-sm font-medium text-gray-500">
               Already registered?
-              <a href="/views/login.php" class="text-blue-700 hover:underline"
+              <a href="/login" class="text-blue-700 hover:underline"
                 >Login account</a
               >
             </div>
@@ -257,6 +248,10 @@
           </form>
         </div>
 
+        <!-- footer-->
+        <p class="text-gray-600 absolute bottom-4 w-screen text-center text-sm">
+            © 2023 Elezione. All rights reserved.
+        </p>
         <!-- form change script -->
         <script>
           const voterBtn = document.getElementById("reg-voter");
@@ -276,7 +271,6 @@
             voterBtn.classList.remove("text-blue-600");
           });
         </script>
-      </div>
     </div>
   </body>
 </html>

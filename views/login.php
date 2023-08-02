@@ -10,28 +10,19 @@
     <?php include_once "components/common.php" ?>
 
   </head>
-  <body class="bg-gray-100">
-    <div
-      class="h-auto min-h-screen flex py-10 justify-center items-center bg-gradient-to-br from-sky-300 to-fuchsia-700"
-    >
+  <body>
+  <div
+      class="h-auto min-h-screen flex py-10 justify-center items-center bg-slate-300/70 flex-col"
+  >
       <!-- logo -->
-      <a
-        href="/"
-        class="absolute top-3 start-2 sm:start-3 md:start-4"
-      >
-        <h1 class="text-3xl font-bold text-white font-belanosima">Elezione</h1>
+      <a href="/" class="absolute top-3 start-2 sm:start-3 md:start-4">
+          <h1 class="text-3xl font-bold md:text-4xl text-slate-700 font-belanosima">
+              Elezione
+          </h1>
       </a>
+
+      <!-- login card -->
       <div
-        class="grid grid-cols-1 py-10 h-fit w-full lg:grid-cols-2 place-items-center"
-      >
-        <!-- login page image -->
-        <img
-          src="resources/login.svg"
-          alt="login"
-          class="hidden w-96 h-fit lg:block xl:w-[26rem] 2xl:w-[30rem] animate-upDown"
-        />
-        <!-- login card -->
-        <div
           class="w-11/12 md:ms-10 sm:w-[25] max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8"
         >
           <form class="space-y-6" action="#">
@@ -100,13 +91,17 @@
             </button>
             <div class="text-sm font-medium text-gray-500">
               Not registered?
-              <a href="/views/register.php" class="text-blue-700 hover:underline"
+              <a href="/register" class="text-blue-700 hover:underline"
                 >Create account</a
               >
             </div>
           </form>
         </div>
+
+      <!-- footer-->
+      <p class="text-gray-600 absolute bottom-4 w-screen text-center text-sm">
+          © 2023 Elezione. All rights reserved.
+      </p>
       </div>
-    </div>
   </body>
 </html>

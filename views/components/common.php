@@ -6,3 +6,6 @@
 
 <!--tailwind css stylesheet-->
 <link href="../../css/output.css" rel="stylesheet">
+
+<!--favicon-->
+<link rel="icon" href="views/resources/favicon.ico" />

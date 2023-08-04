@@ -7,7 +7,9 @@
     <title>Elezione | Easy Voting Solution</title>
 
       <!-- include common data php file-->
-      <?php include_once "components/common.php" ?>
+      <?php include_once "components/common.php";
+
+    ?>
   </head>
   <body>
     <div

@@ -145,21 +145,21 @@ include_once "views/components/header.php"
                     </div>
                     <ul role = "list" class = "space-y-5 my-7">
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >1 poll per month</span
                             >
                         </li>
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >100 total votes</span
                             >
                         </li>
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >5 total candidates</span
@@ -191,21 +191,21 @@ include_once "views/components/header.php"
                     </div>
                     <ul role = "list" class = "space-y-5 my-7">
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >5 poll per month</span
                             >
                         </li>
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >1000 total votes</span
                             >
                         </li>
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >50 total candidates</span
@@ -239,21 +239,21 @@ include_once "views/components/header.php"
                     </div>
                     <ul role = "list" class = "space-y-5 my-7">
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >20 poll per month</span
                             >
                         </li>
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >Unlimited total votes</span
                             >
                         </li>
                         <li class = "flex space-x-3 items-center">
-                            <img src = "resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
+                            <img src = "views/resources/tick.svg" alt = "tick" class = "w-4 h-4"/>
                             <span
                                     class = "text-base font-normal leading-tight text-gray-500"
                             >Unlimited total candidates</span

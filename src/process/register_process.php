@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "src/classes/DBConnector.php";
 require_once "src/classes/User.php";
 
@@ -27,28 +26,24 @@ if (isset($_POST["voter"])) {
     $variable_array = array("name", "email", "password", "conf_password");
     foreach ($variable_array as $variable) {
         if (empty(strip_tags(trim($_POST[$variable])))) {
-            $_SESSION['register_errors'] =  array_search($variable,$variable_array);
-            header("Location: register");
+            echo array_search($variable,$variable_array);
             exit();
         }
     }
 
     if(!filter_var(strip_tags(trim($_POST["email"])), FILTER_VALIDATE_EMAIL)){
-        $_SESSION['register_errors'] =  4;
-        header("Location: register");
+        echo 4;
         exit();
     }
 
     if(strlen(strip_tags(trim($_POST["password"]))) < 6){
-        $_SESSION['register_errors'] =  5;
-        header("Location: register");
+        echo 5;
         exit();
     }
 
     if(!password_verify(strip_tags(trim($_POST["conf_password"])) ,
         password_hash(strip_tags(trim($_POST["password"])) , PASSWORD_BCRYPT))){
-        $_SESSION['register_errors'] =  6;
-        header("Location: register");
+        echo 6;
         exit();
     }
 
@@ -56,26 +51,30 @@ if (isset($_POST["voter"])) {
     $email = strip_tags(trim($_POST["email"]));
     $password = password_hash(strip_tags(trim($_POST["password"])) , PASSWORD_BCRYPT);
 
-    $user = new User($voter_name , $email , $password , "free" , "voter");
+    $user = new User($voter_name , $email , $password , "free" , "voter" ,password_hash($email ,PASSWORD_BCRYPT));
 
-    if($user->register($con)){
-        header("Location: login");
+    if(!($user->is_new_user($con))){
+        echo 7;
         exit();
     }
-    header("Location: register");
+
+    if($user->register($con)){
+        echo "success";
+    }else{
+        echo "error";
+    }
     exit();
 
-} elseif (isset($_POST["organization"])) {
+
+}
+
+if (isset($_POST["organization"])) {
     $org_name = $_POST["org_name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     $conf_password = $_POST["conf_password"];
 
-//    $uregister = new User($name, $email, $password, $conf_password);
-//    $uregister->regUser();
-
-
 } else {
-    header("Location: register");
+    echo "error";
 }
 

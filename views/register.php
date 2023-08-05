@@ -1,12 +1,3 @@
-<?php
-session_start();
-$error_value = null;
-if (isset($_SESSION['register_errors'])) {
-    $error_value = $_SESSION['register_errors'];
-    unset($_SESSION['register_errors']);
-}
-?>
-
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -58,7 +49,7 @@ if (isset($_SESSION['register_errors'])) {
         </ul>
 
         <!-- user registration -->
-        <form class = "space-y-6 p-4 sm:p-6 md:p-8" action = "register_process" id = "voter-form" method = "post">
+        <form class = "space-y-6 p-4 sm:p-6 md:p-8" id = "voter-form">
             <h5 class = "text-xl font-medium text-gray-900">
                 Register to
                 <span class = "font-belanosima text-2xl text-sky-600"
@@ -79,8 +70,7 @@ if (isset($_SESSION['register_errors'])) {
                         placeholder = "Peter Elwin"
                         required
                 />
-                <span class = "text-sm text-red-400">
-                <?php echo ($error_value === 0) ? "Name is empty" : "" ?></span>
+                <span class = "text-sm text-red-400 font-semibold" id = "error-span-0"></span>
             </div>
             <div>
                 <label
@@ -89,15 +79,14 @@ if (isset($_SESSION['register_errors'])) {
                 >Your email <span class = "text-red-500">*</span></label
                 >
                 <input
-                        type = "email"
+                        type = "text"
                         name = "email"
                         id = "email"
                         class = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 focus:ring-1 !outline-none"
                         placeholder = "name@company.com"
                         required
                 />
-                <span class = "text-sm text-red-400">
-                <?php echo ($error_value === 1) ? "Email is empty" : "" ?></span>
+                <span class = "text-sm text-red-400 font-semibold" id = "error-span-1"></span>
             </div>
             <div>
                 <label
@@ -113,8 +102,7 @@ if (isset($_SESSION['register_errors'])) {
                         class = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 focus:ring-1 !outline-none"
                         required
                 />
-                <span class = "text-sm text-red-400">
-                <?php echo ($error_value === 2) ? "Password is empty" : "" ?></span>
+                <span class = "text-sm text-red-400 font-semibold" id = "error-span-2"></span>
             </div>
             <div>
                 <label
@@ -130,10 +118,10 @@ if (isset($_SESSION['register_errors'])) {
                         class = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 focus:ring-1 !outline-none"
                         required
                 />
-                <span class = "text-sm text-red-400">
-                <?php echo ($error_value === 3) ? "Confirm password is empty" : "" ?></span>
+                <span class = "text-sm text-red-400 font-semibold" id = "error-span-3"></span>
             </div>
             <button
+                    id = "voter-submit"
                     type = "submit"
                     value = "voter"
                     name = "voter"
@@ -295,6 +283,51 @@ if (isset($_SESSION['register_errors'])) {
         });
     </script>
 
+    <!-- jquery -->
+    <script src = "https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+    <!-- submit function -->
+    <script>
+        $(document).ready(() => {
+
+            $("#voter-submit").click((event) => {
+                event.preventDefault();
+                let formData = $("#voter-form").serialize();
+                formData += "&" + event.target.name + "=" + event.target.value;
+                $.post("register_process", formData, (data, status) => {
+                    // remove current error
+                    for (let i = 0; i < 4; i++) {
+                        $("#error-span-" + i).text("");
+                    }
+                    console.log("data -> " , data , "status -> " , status);
+                    // show new error
+                    if (status === "success") {
+                        if (data !== "success") {
+                            if (parseInt(data) in [0, 1, 2, 3]) {
+                                $("#error-span-" + data).text("Field is empty");
+                            } else if (parseInt(data) === 4) {
+                                $("#error-span-1").text("Invalid email format");
+                            } else if (parseInt(data) === 5) {
+                                $("#error-span-2").text("Password less than 6 characters");
+                            } else if (parseInt(data) === 6) {
+                                $("#error-span-3").text("Password and confirm password different");
+                            } else if (parseInt(data) === 7) {
+                                $("#error-span-1").text("Email already registered");
+                            } else {
+                                location.reload();
+                            }
+                        }else {
+
+                        }
+                    } else {
+                        location.reload();
+                    }
+                })
+            })
+
+
+        })
+    </script>
 </div>
 </body>
 </html>

@@ -21,5 +21,5 @@ $app->get("/terms",function (){Controller::get_router("terms");});
 
 $app->post("/login_process",function (){Controller::post_router("login_process");});
 $app->post("/register_process",function (){Controller::post_router("register_process");});
-$app->set404(function (){Controller::get_router("error");});
+$app->set404(function (){Controller::get_router("404");});
 $app->run();

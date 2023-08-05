@@ -1,7 +1,9 @@
 <?php
 
 namespace Elezione\classes;
-use Elezione\classes\DBConnector;
+
+use PDO;
+use PDOException;
 
 class User
 {
@@ -9,126 +11,42 @@ class User
     private $name;
     private $email;
     private $password;
-    private $conf_password;
+    private $accType;
+    private $userId = 3;
+    private $userType;
+    private $verificationCode = "fcswfgveg";
+    private $verificationStatus = "verified";
 
-    public function __construct($name, $email, $password, $conf_password)
+    public function __construct($name, $email, $password, $accType, $userType)
     {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
-        $this->conf_password = $conf_password;
+        $this->accType = $accType;
+        $this->userType = $userType;
     }
 
-    public function regUser()
+    public function register($connection)
     {
-        if (!$this->emptyInputs()) {
-            header("Location: register?error=emptyInputs");
-            exit();
-        }
-        if (!$this->invalidMail()) {
-            header("Location: register?error=email");
-            exit();
-        }
-        if (!$this->pwdMatch()) {
-            header("Location: register?error=passwordMatch");
-            exit();
-        }
-        if (!$this->idTakenCheck()) {
-            header("Location: register?error=emailorPasswordTaken");
-            exit();
-        }
-        $this->setUser($this->name, $this->email, $this->password);
-    }
+        $query = "insert into user values(?,?,?,?,?,?,?,?)";
+        try {
 
-    private function emptyInputs(): bool
-    {
-        $result = null;
-        if (empty($this->email) || empty($this->name) || empty($this->password) || empty($this->conf_password)) {
-            $result = false;
-        } else {
-            $result = true;
-        }
-        return $result;
-    }
-
-    private function invalidMail(): bool
-    {
-        $result = null;
-        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $result = false;
-        } else {
-            $result = true;
-        }
-        return $result;
-    }
-
-    private function pwdMatch(): bool
-    {
-        $result = null;
-        if ($this->password !== $this->conf_password) {
-            $result = false;
-        } else {
-            $result = true;
-        }
-        return $result;
-    }
-
-    private function idTakenCheck(): bool
-    {
-        $result = null;
-        if (!$this->checkUser($this->email, $this->password)) {
-            $result = false;
-        } else {
-            $result = true;
-        }
-        return $result;
-    }
-
-
-
-    protected function setUser($name, $email, $password): void
-    {
-        $dbcon = new DBConnector();
-        $con = $dbcon->getConnection();
-
-        $insert_data="INSERT INTO user (name,email,password) VALUES (?,?,?) ";
-
-        $hashpw = password_hash($password, PASSWORD_BCRYPT);
-        $pstmt = $con->prepare($insert_data);
-
-        $pstmt->bindValue(1,$name);
-        $pstmt->bindValue(2,$email);
-        $pstmt->bindValue(3,$password);
-
-
-        $pstmt->execute(array($name, $email, $hashpw));
-        if ($pstmt) {
-
-            header("Location: register?error=stmt_failed");
-            exit();
+            $pstmt = $connection->prepare($query);
+            $pstmt->bindValue(1, $this->userId);
+            $pstmt->bindValue(2, $this->name);
+            $pstmt->bindValue(3, $this->password);
+            $pstmt->bindValue(4, $this->accType);
+            $pstmt->bindValue(5, $this->email);
+            $pstmt->bindValue(6, $this->verificationCode);
+            $pstmt->bindValue(7, $this->verificationStatus);
+            $pstmt->bindValue(8, $this->userType);
+            $pstmt->execute();
+            $result = $pstmt->fetch(PDO::FETCH_ASSOC);
+            return $result > 0;
+        } catch (PDOException $ex) {
+            die("Error : " . $ex->getMessage());
         }
 
     }
-
-    protected function checkUser($email, $password): bool
-    {
-
-        $dbcon = new DBConnector();
-        $con = $dbcon->getConnection();
-        $insert_data = "SELECT userID FROM user WHERE email =? OR password =? ";
-        $pstmt = $con->prepare($insert_data);
-        $pstmt->execute(array($email, $password));
-        if ($pstmt) {
-            header('Location:register');
-            exit();
-            if ($pstmt->rowCount() > 0) {
-                $resultCheck = false;
-            } else {
-                $resultCheck = true;
-            }
-        }            return $resultCheck;
-
-    }
-
 
 }

@@ -3,10 +3,12 @@ require_once "src/classes/DBConnector.php";
 require_once "src/classes/User.php";
 
 use Elezione\classes\DBConnector;
+use Elezione\classes\EmailConnector;
 use Elezione\classes\User;
 
 //connection create
 $con = DBConnector::getConnection();
+$email_con = EmailConnector::getEmailConnection();
 
 /** @ Error codes
  * voter registration
@@ -58,8 +60,8 @@ if (isset($_POST["voter"])) {
         exit();
     }
 
-    if($user->register($con)){
-        echo "success";
+    if($user->register($con , $email_con)){
+       echo "success";
     }else{
         echo "error";
     }

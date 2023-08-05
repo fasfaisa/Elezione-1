@@ -4,19 +4,6 @@ namespace Elezione\classes;
 
 use PDO;
 use PDOException;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-
-$mail = new PHPMailer();
-$mail->isMail();
-$mail->SMTPAuth = true;
-$mail->Host = "smtp.gmail.com";
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-$mail->Port = 587;
-$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-$mail->Username = "projectelezione@gmail.com";
-$mail->Password = "ProjectElezione";
 
 class User
 {
@@ -53,9 +40,9 @@ class User
         }
     }
 
-    public function register($connection)
+    public function register($connection , $email_connection)
     {
-        global $mail;
+
         $query = "insert into user (name , password , accountType , email , verificationCode , verificationStatus , userType ) values(?,?,?,?,?,?,?)";
         try {
 
@@ -69,20 +56,17 @@ class User
             $pstmt->bindValue(7, $this->userType);
             $pstmt->execute();
 
-            $mail->setFrom("projectelezione@gmail.com", "Elezione");
-            $mail->addAddress($this->email, $this->name);
-
-            $mail->Subject = "Verify your Elezione account";
-            $mail->Body = "Hi , ".$this->name."!\n\n Please verify your account using this link.\n\n
-            http://localhost:8080?verify=".$this->verificationCode;
-
-            $mail->send();
+            $email_connection->addAddress($this->email , $this->name);
+            $email_connection->Subject = "Verify your Elezione account";
+            $email_connection->Body = "Hi , ".$this->name." ,\n\nPlease verify your Elezione account using this link.\n\nhttp://localhost:8080?verify=".$this->verificationCode;
+    
+            $email_connection->send();
 
             return true;
         } catch (PDOException $ex) {
             die("Registration Error : " . $ex->getMessage());
         } catch (Exception $ex) {
-            echo $ex;
+            echo $ex.ErrorInfo();
             exit();
         }
 

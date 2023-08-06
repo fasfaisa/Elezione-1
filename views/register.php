@@ -21,8 +21,8 @@
     </a>
 
     <!--form div-->
-    <div
-            class = "w-11/12 h-fit sm:w-[28rem] md:w-[30rem] max-w-lg bg-white border border-gray-200 rounded-lg shadow"
+    <div id = "form-div"
+         class = "w-11/12 h-fit sm:w-[28rem] md:w-[30rem] max-w-lg bg-white border border-gray-200 rounded-lg shadow"
     >
         <ul
                 class = "flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50"
@@ -119,6 +119,9 @@
                         required
                 />
                 <span class = "text-sm text-red-400 font-semibold" id = "error-span-3"></span>
+            </div>
+            <div class = "text-center py-2 bg-red-400 text-white hidden" id = "voter-unsuccessful">Registration
+                                                                                                   unsuccessful.
             </div>
             <button
                     id = "voter-submit"
@@ -235,7 +238,9 @@
             <p class = "mb-4 mt-8 text-center italic text-emerald-700">
                 No need to pay today. All accounts have 7 days free trial.
             </p>
-
+            <div class = "text-center py-2 bg-red-400 text-white hidden" id = "org-unsuccessful">Registration
+                                                                                                 unsuccessful.
+            </div>
             <button
                     type = "submit"
                     value = "organization"
@@ -257,6 +262,24 @@
                 >
             </div>
         </form>
+    </div>
+
+
+    <!-- processing div-->
+    <div id = "processing-div"
+         class = "text-sky-800 text-center hidden">
+        <span class = "material-symbols-outlined text-5xl animate-spin">progress_activity</span>
+        <h1 class = "mt-5 text-xl italic">Processing</h1>
+    </div>
+
+    <!-- success div-->
+    <div id = "success-div" class = "px-4 max-w-lg text-center hidden">
+        <h1 class = "mb-3 text-2xl font-semibold">Email Confirmation Required</h1>
+        <h3>
+            We sent the email to your email.
+            Check your inbox to activate the account. If the confirmation email is not in your inbox, please
+            check the Spam. Thank you.
+        </h3>
     </div>
 
     <!-- footer-->
@@ -294,15 +317,24 @@
                 event.preventDefault();
                 let formData = $("#voter-form").serialize();
                 formData += "&" + event.target.name + "=" + event.target.value;
+
+                // start processing animation
+                $("#processing-div").removeClass("hidden");
+                $("#form-div").addClass("hidden");
+
                 $.post("register_process", formData, (data, status) => {
-                    // remove current error
+                    // remove current errors
                     for (let i = 0; i < 4; i++) {
                         $("#error-span-" + i).text("");
                     }
-                    console.log("data -> " , data , "status -> " , status);
+                    console.log("data -> ", data, "status -> ", status);
+                    // remove processing div
+                    $("#processing-div").addClass("hidden");
+
                     // show new error
                     if (status === "success") {
                         if (data !== "success") {
+                            $("#form-div").removeClass("hidden");
                             if (parseInt(data) in [0, 1, 2, 3]) {
                                 $("#error-span-" + data).text("Field is empty");
                             } else if (parseInt(data) === 4) {
@@ -314,13 +346,14 @@
                             } else if (parseInt(data) === 7) {
                                 $("#error-span-1").text("Email already registered");
                             } else {
-                                location.reload();
+                                $("#voter-unsuccessful").removeClass("hidden");
                             }
-                        }else {
-
+                        } else {
+                            $("#success-div").removeClass("hidden");
                         }
                     } else {
-                        location.reload();
+                        $("#form-div").removeClass("hidden");
+                        $("#voter-unsuccessful").removeClass("hidden");
                     }
                 })
             })

@@ -228,7 +228,7 @@ include_once "views/components/header.php"
                         class = "w-[18rem] bg-white sm:translate-x-1/2 xl:translate-x-0 max-w-sm p-4 border-2 border-emerald-600 rounded-lg shadow-lg drop-shadow-lg"
                 >
                     <h5 class = "mb-4 text-xl font-medium text-gray-500">
-                        Platinam plan
+                        Platinum plan
                     </h5>
                     <div class = "flex items-baseline text-gray-800">
                         <span class = "text-3xl font-semibold">$</span>

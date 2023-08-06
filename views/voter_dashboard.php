@@ -131,7 +131,7 @@
               >
                 <option value="silver" selected>Silver</option>
                 <option value="gold">Gold</option>
-                <option value="platinam">Platinam</option>
+                <option value="platinum">Platinum</option>
               </select>
             </div>
 

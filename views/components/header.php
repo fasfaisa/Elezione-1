@@ -1,5 +1,5 @@
 <header class= "<?php echo $color ?? 'bg-blue-500' ?> py-4 px-8 flex justify-center w-screen">
-    <div class="container mx-0 md:mx-auto flex justify-between items-center z-50">
+    <div class="container mx-0 md:mx-auto flex justify-between items-center z-[99]">
         <a href="/">
             <h1 class="text-3xl font-bold text-white font-belanosima">
                 Elezione

@@ -11,7 +11,6 @@ class User
     private $name;
     private $email;
     private $password;
-    private $accType;
     private $userType;
     private $verificationCode;
     private string $verificationStatus = "Unverified";
@@ -26,17 +25,16 @@ class User
         }
     }
 
-    public function _construct1($verificationCode)
+    public function _construct1($verificationCode): void
     {
         $this->verificationCode = $verificationCode;
     }
 
-    public function _construct6($name, $email, $password, $accType, $userType, $verificationCode)
+    public function _construct5($name, $email, $password, $userType, $verificationCode): void
     {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
-        $this->accType = $accType;
         $this->userType = $userType;
         $this->verificationCode = $verificationCode;
     }
@@ -56,7 +54,7 @@ class User
         }
     }
 
-    public function is_verified($connection)
+    public function is_verified($connection): int
     {
         $query = "select userID , verificationStatus from user where verificationCode = ?";
         $pstmt = $connection->prepare($query);
@@ -66,7 +64,7 @@ class User
 
         if (!(empty($result))) {
             if ($result->verificationStatus === "Unverified") {
-                $new_query = "update user set verificationStatus = 'Verified' where userID = ?";
+                $new_query = "update user set verificationStatus = 'Verified' ,verificationCode = null  where userID = ?";
                 $pstmt = $connection->prepare($new_query);
                 $pstmt->bindValue(1, $result->userID);
                 $pstmt->execute();
@@ -84,17 +82,16 @@ class User
     public function register($connection, $email_connection)
     {
 
-        $query = "insert into user (name , password , accountType , email , verificationCode , verificationStatus , userType ) values(?,?,?,?,?,?,?)";
+        $query = "insert into user (name , password , email , verificationCode , verificationStatus , userType ) values(?,?,?,?,?,?)";
         try {
 
             $pstmt = $connection->prepare($query);
             $pstmt->bindValue(1, $this->name);
             $pstmt->bindValue(2, $this->password);
-            $pstmt->bindValue(3, $this->accType);
-            $pstmt->bindValue(4, $this->email);
-            $pstmt->bindValue(5, $this->verificationCode);
-            $pstmt->bindValue(6, $this->verificationStatus);
-            $pstmt->bindValue(7, $this->userType);
+            $pstmt->bindValue(3, $this->email);
+            $pstmt->bindValue(4, $this->verificationCode);
+            $pstmt->bindValue(5, $this->verificationStatus);
+            $pstmt->bindValue(6, $this->userType);
             $pstmt->execute();
 
 //          send verification email
@@ -110,5 +107,37 @@ class User
         }
 
     }
+
+    /**
+     * getters
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getUserType()
+    {
+        return $this->userType;
+    }
+
+    public function getVerificationStatus(): string
+    {
+        return $this->verificationStatus;
+    }
+
+    public function getUserID($connection){
+        $query = "select userID from user where email = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $this->email);
+        $pstmt->execute();
+        return $pstmt->fetch(PDO::FETCH_OBJ)-> userID;
+    }
+
 
 }

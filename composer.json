@@ -2,7 +2,7 @@
   "name": "kavindu/elezione",
   "autoload": {
     "psr-4": {
-      "Elezione\\": "src/"
+      "Elezione\\": "app/"
     }
   },
   "authors": [

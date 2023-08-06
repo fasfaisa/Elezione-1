@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Belanosima&family=Kumbh+Sans&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen flex flex-col justify-between overflow-x-hidden bg-slate-100 text-slate-800;
+  }
+}
+
+.belanosima {
+  font-family: "Belanosima", sans-serif;
+}
+
+.upDown {
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  50%,
+  100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-20px);
+  }
+  75% {
+    transform: translate(20px);
+  }
+}

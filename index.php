@@ -18,6 +18,7 @@ $app->get("/login",function (){Controller::get_router("login");});
 $app->get("/register",function (){Controller::get_router("register");});
 $app->get("/privacy",function (){Controller::get_router("privacy");});
 $app->get("/terms",function (){Controller::get_router("terms");});
+$app->get("/verification",function (){Controller::get_router("verification");});
 
 $app->post("/login_process",function (){Controller::post_router("login_process");});
 $app->post("/register_process",function (){Controller::post_router("register_process");});

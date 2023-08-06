@@ -693,6 +693,10 @@ video {
   z-index: 0;
 }
 
+.z-\[99\]{
+  z-index: 99;
+}
+
 .float-right{
   float: right;
 }
@@ -1197,6 +1201,16 @@ video {
 
 .transform-none{
   transform: none;
+}
+
+@keyframes spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin{
+  animation: spin 1s linear infinite;
 }
 
 .cursor-pointer{
@@ -2863,6 +2877,11 @@ video {
   color: rgb(2 132 199 / var(--tw-text-opacity));
 }
 
+.text-sky-800{
+  --tw-text-opacity: 1;
+  color: rgb(7 89 133 / var(--tw-text-opacity));
+}
+
 .text-slate-100{
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
@@ -3299,6 +3318,10 @@ video {
   content: var(--tw-content);
 }
 
+.\[hostname\:port\]{
+  hostname: port;
+}
+
 .belanosima{
   font-family: 'Belanosima', sans-serif;
 }
@@ -3513,10 +3536,6 @@ video {
 .group:hover .group-hover\:text-gray-600{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
-.peer:active ~ .peer-active\:hidden{
-  display: none;
 }
 
 @media (min-width: 640px){
@@ -3740,6 +3759,11 @@ video {
     line-height: 1.75rem;
   }
 
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:shadow-none{
     --tw-shadow: 0 0 #0000;
     --tw-shadow-colored: 0 0 #0000;
@@ -3873,6 +3897,11 @@ video {
   .xl\:px-40{
     padding-left: 10rem;
     padding-right: 10rem;
+  }
+
+  .xl\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .xl\:text-5xl{

@@ -4,21 +4,24 @@ namespace Elezione\classes;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 
 class EmailConnector{
-    public static function getEmailConnection(){
+    public static function getEmailConnection(): PHPMailer
+    {
         $mail = new PHPMailer();
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
         $mail->Username = $_ENV["EMAIL_USER"];
         $mail->Password = $_ENV["EMAIL_PASSWORD"];
 
-        $mail->setFrom($_ENV["EMAIL_USER"], "Elezione Verification" , 0);
+        try {
+            $mail->setFrom($_ENV["EMAIL_USER"], "Elezione Verification", 0);
+        } catch (Exception $ex) {
+            echo $ex->errorMessage();
+        }
         return $mail;
     } 
 

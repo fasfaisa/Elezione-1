@@ -1,6 +1,4 @@
 <?php
-require_once "src/classes/DBConnector.php";
-require_once "src/classes/User.php";
 
 use Elezione\classes\DBConnector;
 use Elezione\classes\EmailConnector;

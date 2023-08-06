@@ -175,7 +175,7 @@
                     $("#unsuccessful-div").addClass("hidden");
 
                     $.post("register_process", formData, (data, status) => {
-                        console.log("data -> ", data, "\nstatus -> ", status); // this statement help to get idea about response
+                        // console.log("data -> ", data, "\nstatus -> ", status); // this statement help to get idea about response
                         // remove processing div
                         $("#processing-div").addClass("hidden");
 

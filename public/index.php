@@ -11,6 +11,8 @@ $dotenv->load();
 $app = new Router();
 
 $app->setNamespace('\Elezione');
+$app->setBasePath('/');
+
 $app->get("/", function () {
     Controller::get_router("home");
 });
@@ -38,6 +40,10 @@ $app->get("/terms", function () {
 $app->get("/verification", function () {
     Controller::get_router("verification");
 });
+$app->get("/dashboard", function () {
+    Controller::post_router("dashboard_process");
+});
+
 
 $app->post("/login_process", function () {
     Controller::post_router("login_process");
@@ -45,6 +51,7 @@ $app->post("/login_process", function () {
 $app->post("/register_process", function () {
     Controller::post_router("register_process");
 });
+
 $app->set404(function () {
     Controller::get_router("404");
 });

@@ -10,13 +10,12 @@ if (isset($_GET["verify"])) {
         $user = new User($_GET["verify"]);
         if (($user->is_verified($con))) {
             echo "Confirm Your Email<br/>Thank you! Your email has been confirmed successfully.";
-        }else{
+        } else {
             echo "Invalid verification link.";
         }
-    }else{
+    } else {
         echo "Invalid verification link.";
     }
-
 } else {
     header("Location: error");
 }

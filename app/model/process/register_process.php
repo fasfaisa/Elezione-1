@@ -78,7 +78,7 @@ if (isset($_POST["voter"]) || isset($_POST["organization"])) {
             exit();
         }
         $package = strip_tags(trim($_POST["package"]));
-        $organizer = new Organization($voter_name, $email, $password, "organizer", password_hash($email, PASSWORD_BCRYPT), $package);
+        $organizer = new Organization($voter_name, $email, $password, "organizer", preg_replace('/[^a-zA-Z0-9]/m', '', password_hash($email, PASSWORD_BCRYPT)), $package);
 
         if (!($organizer->is_new_user($con))) {
             echo 8;

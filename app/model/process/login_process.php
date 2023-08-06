@@ -1,30 +1,36 @@
 <?php
 
 use Elezione\model\classes\DBConnector;
+use Elezione\model\classes\User;
 
 $con = DBConnector::getConnection();
+$remember = false;
 
-// Check if the form was submitted
-if (isset($_POST["login"])) {
-    // Get the user's input
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+if (empty(strip_tags(trim($_POST["email"])))) {
+    echo 0;
+    exit();
+}
+if (empty(strip_tags(trim($_POST["password"])))) {
+    echo 1;
+    exit();
+}
 
-    // Prepare the SQL query to check if the user exists
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $result = mysqli_query($con, $sql);
-    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+if (isset($_POST["remember"]) && strip_tags(trim($_POST["remember"])) === "remember") {
+    $remember = true;
+}
 
-    if ($user) {
-        if (password_verify($password, $user["password"])) {
-            // Password is correct, login successful
-            header("Location: index.php");
-            die();
-        } else {
-            // Invalid credentials
-            echo "<div class='alert alert-danger'>Password does not match</div>";
-        }
-    } else {
-        echo "<div class='alert alert-danger'>Email does not match</div>";
-    }
+if (!filter_var(strip_tags(trim($_POST["email"])), FILTER_VALIDATE_EMAIL)) {
+    echo 2;
+    exit();
+}
+$email = strip_tags(trim($_POST["email"]));
+
+$user = new User();
+$status = $user->login($con, $email, strip_tags(trim($_POST["password"])), $remember);
+if ($status === 0) {
+    echo "success";
+} elseif ($status === 1) {
+    echo 3;
+} elseif ($status === 2) {
+    echo 2;
 }

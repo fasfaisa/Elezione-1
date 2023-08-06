@@ -8,7 +8,7 @@
   <title>Elezione | Easy Voting Solution</title>
 
   <!-- script for navigation bar control -->
-  <script src="js/header.js"></script>
+  <script src="/js/header.js"></script>
 
   <!-- include common data php file-->
   <?php include_once "components/common.php" ?>

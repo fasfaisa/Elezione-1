@@ -30,6 +30,10 @@ class User
         $this->verificationCode = $verificationCode;
     }
 
+    public function _construct0(): void
+    {
+    }
+
     public function _construct5($name, $email, $password, $userType, $verificationCode): void
     {
         $this->name = $name;
@@ -99,6 +103,24 @@ class User
         } catch (PDOException $ex) {
             die("Registration Error : " . $ex->getMessage());
         }
+    }
+
+    public function login($connection, $email, $password, $remember): int
+    {
+        $query = "select userID , verificationStatus , password , userType from user where email = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $email);
+        $pstmt->execute();
+        $result = $pstmt->fetch(PDO::FETCH_OBJ);
+        if (password_verify($password, $result->password)) {
+            if ($result->verificationStatus === "Verified") {
+                return 0;
+            }
+            if ($result->verificationStatus === "Unverified") {
+                return 1;
+            }
+        }
+        return 2;
     }
 
     /**

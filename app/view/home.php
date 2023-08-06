@@ -8,7 +8,7 @@
     <title>Elezione | Easy Voting Solution</title>
 
     <!-- script for navigation bar control -->
-    <script src="js/header.js"></script>
+    <script src="/js/header.js"></script>
 
     <!-- include common data php file-->
     <?php include_once "components/common.php" ?>
@@ -24,7 +24,7 @@
 
     <!-- Hero Section -->
     <section class="h-screen flex items-center relative -mt-[4.25rem] bg-slate-800">
-        <img src="resources/start-bg.jpeg" alt="bg-image" class="object-cover h-screen w-screen top-0 opacity-70 absolute" />
+        <img src="/resources/start-bg.jpeg" alt="bg-image" class="object-cover h-screen w-screen top-0 opacity-70 absolute" />
         <div class="container z-50 mx-auto p-4">
             <h1 class="text-4xl md:text-6xl xl:text-7xl font-bold text-center text-slate-100 mb-3">
                 Welcome to <span class="font-belanosima text-sky-500">Elezione</span>
@@ -41,7 +41,7 @@
     <!-- Features Section -->
     <section class="py-20 relative">
         <!--background image-->
-        <img src="resources/bg.svg" alt="bg-image" class="absolute object-cover h-full w-full top-0 -z-50 opacity-80" />
+        <img src="/resources/bg.svg" alt="bg-image" class="absolute object-cover h-full w-full top-0 -z-50 opacity-80" />
         <div class="mx-auto px-8 sm:px-16 md:px-24 lg:px-32 xl:px-40">
             <!-- Why Elezione -->
             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-5">
@@ -112,15 +112,15 @@
                         </div>
                         <ul role="list" class="space-y-5 my-7">
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">1 poll per month</span>
                             </li>
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">100 total votes</span>
                             </li>
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">5 total candidates</span>
                             </li>
                         </ul>
@@ -140,15 +140,15 @@
                         </div>
                         <ul role="list" class="space-y-5 my-7">
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">5 poll per month</span>
                             </li>
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">1000 total votes</span>
                             </li>
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">50 total candidates</span>
                             </li>
                         </ul>
@@ -170,15 +170,15 @@
                         </div>
                         <ul role="list" class="space-y-5 my-7">
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">20 poll per month</span>
                             </li>
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">Unlimited total votes</span>
                             </li>
                             <li class="flex space-x-3 items-center">
-                                <img src="resources/tick.svg" alt="tick" class="w-4 h-4" />
+                                <img src="/resources/tick.svg" alt="tick" class="w-4 h-4" />
                                 <span class="text-base font-normal leading-tight text-gray-500">Unlimited total candidates</span>
                             </li>
                         </ul>

@@ -17,8 +17,14 @@
 
 <body>
 
+<!-- process file-->
+<?php include_once "../app/model/process/voter_account_process.php" ?>
+
   <!-- Navigation -->
-  <?php include_once "components/header.php" ?>
+  <?php
+  $logout="out";
+  include_once "components/header.php"
+  ?>
 
   <!-- change this area only : start -->
   <div class="pb-10">

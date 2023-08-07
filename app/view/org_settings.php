@@ -17,6 +17,9 @@
 
 <body>
 
+<!-- process file-->
+<?php include_once "../app/model/process/organizer_settings_process.php" ?>
+
   <!-- Navigation -->
   <?php include_once "components/header.php" ?>
 

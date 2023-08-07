@@ -43,6 +43,16 @@ $app->get("/verification", function () {
 $app->get("/dashboard", function () {
     Controller::post_router("dashboard_process");
 });
+$app->get("/logout", function () {
+    Controller::post_router("logout_process");
+});
+$app->get("/dashboard/settings", function () {
+    Controller::get_router("org_settings");
+});
+$app->get("/campaign", function () {
+    Controller::get_router("campaign");
+});
+
 
 
 $app->post("/login_process", function () {

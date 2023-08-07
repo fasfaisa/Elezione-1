@@ -24,7 +24,7 @@
 
                 <a href="/faq" class="mx-4 my-3 w-60 font-semibold text-white hover:text-amber-300 md:my-0 md:w-auto">FAQ</a>
 
-                <a href="/login" class="md:mx-2 ms-5 px-2 my-2 py-2 md:py-1 w-60 rounded-sm font-semibold hover:bg-sky-950 duration-200 ease-in text-center text-sky-500 md:my-0 md:w-auto bg-white">Login</a>
+                <a href="/log<?php echo $logout ?? 'in'?>" class="md:mx-2 ms-5 px-2 my-2 py-2 md:py-1 w-60 rounded-sm font-semibold hover:bg-sky-950 duration-200 ease-in text-center text-sky-500 md:my-0 md:w-auto bg-white">Log<?php echo $logout ?? "in" ?></a>
             </div>
         </nav>
     </div>

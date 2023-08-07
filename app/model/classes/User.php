@@ -1,6 +1,7 @@
 <?php
 
 namespace Elezione\model\classes;
+session_start();
 
 use PDO;
 use PDOException;
@@ -114,6 +115,13 @@ class User
         $result = $pstmt->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password)) {
             if ($result->verificationStatus === "Verified") {
+                $_SESSION["user"] = $result->userID."@".$result->userType;
+                $token = password_hash($email.time() , PASSWORD_BCRYPT);
+                $query = "insert into users (loginToken) values (?) where userID = $result->userID";
+                $pstmt->$connection->prepare($query);
+                $pstmt->bindValue(1,$token);
+                $pstmt->execute();
+                setcookie("login_token" , $token , time() + (30 * 24 * 60 * 60) , "/"); // for 30 days
                 return 0;
             }
             if ($result->verificationStatus === "Unverified") {
@@ -123,6 +131,19 @@ class User
         return 2;
     }
 
+    public function login_with_cookie($connection , $token): bool
+    {
+        $query = "select userID , userType  from user where loginToken = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $token);
+        $pstmt->execute();
+        $result = $pstmt->fetch(PDO::FETCH_OBJ);
+        if($result === 0){
+            return false;
+        }
+        $_SESSION["user"] = $result->userID."@".$result->userType;
+        return true;
+    }
     /**
      * getters
      */

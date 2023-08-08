@@ -4,6 +4,12 @@ if (isset($_SESSION["user"])) {
     header("Location: dashboard");
     exit();
 }
+global $is_logged;
+include_once "../app/model/process/login_token_process.php";
+if ($is_logged){
+    header("Location: dashboard");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

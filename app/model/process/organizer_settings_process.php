@@ -1,12 +1,16 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"])) {
-    header("Location: login");
-    exit();
+    global $is_logged;
+    include_once "../app/model/process/login_token_process.php";
+    if (!$is_logged) {
+        header("Location: login");
+        exit();
+    }
 }
 
 if (explode("@", $_SESSION["user"])[1] !== "organizer") {
-    header("Location: login");
+    header("Location: /error");
     exit();
 }
 

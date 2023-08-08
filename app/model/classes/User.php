@@ -116,12 +116,15 @@ class User
         if (password_verify($password, $result->password)) {
             if ($result->verificationStatus === "Verified") {
                 $_SESSION["user"] = $result->userID."@".$result->userType;
-                $token = password_hash($email.time() , PASSWORD_BCRYPT);
-                $query = "insert into users (loginToken) values (?) where userID = $result->userID";
-                $pstmt->$connection->prepare($query);
-                $pstmt->bindValue(1,$token);
-                $pstmt->execute();
-                setcookie("login_token" , $token , time() + (30 * 24 * 60 * 60) , "/"); // for 30 days
+                if($remember){
+                    $token = password_hash($email.time() , PASSWORD_BCRYPT);
+                    $query = "update user set loginToken = ? where userID = ?";
+                    $pstmt = $connection->prepare($query);
+                    $pstmt->bindValue(1,$token);
+                    $pstmt->bindValue(2,$result->userID);
+                    $pstmt->execute();
+                    setcookie("login_token" , $token , time() + (30 * 24 * 60 * 60) , "/"); // for 30 days
+                }
                 return 0;
             }
             if ($result->verificationStatus === "Unverified") {
@@ -129,6 +132,14 @@ class User
             }
         }
         return 2;
+    }
+
+    public function logout($connection ,$token): void
+    {
+        $query = "update user set loginToken = NULL where loginToken = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $token);
+        $pstmt->execute();
     }
 
     public function login_with_cookie($connection , $token): bool

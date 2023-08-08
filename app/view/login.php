@@ -3,8 +3,13 @@ session_start();
 if (isset($_SESSION["user"])) {
     header("Location: dashboard");
     exit();
-}else{
-    include_once "../app/model/process/login_token_process.php";
+}
+
+global $is_logged;
+include_once "../app/model/process/login_token_process.php";
+if ($is_logged){
+    header("Location: dashboard");
+    exit();
 }
 ?>
 

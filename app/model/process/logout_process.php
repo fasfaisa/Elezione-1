@@ -1,4 +1,10 @@
 <?php
+
+use Elezione\model\classes\DBConnector;
+use Elezione\model\classes\User;
+
+$con = DBConnector::getConnection();
+
 session_start();
 
 // Clear all session data
@@ -20,6 +26,13 @@ if (ini_get("session.use_cookies")) {
 
 // Destroy the session itself
 session_destroy();
+
+//remove login cookie
+if(isset($_COOKIE["login_token"])){
+    $user =  new User();
+    $user->logout($con  , $_COOKIE["login_token"]);
+    setcookie("login_token", '', time() - 3600, '/');
+}
 
 header("Location: login");
 exit();

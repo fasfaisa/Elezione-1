@@ -9,6 +9,9 @@ function redirect(): void
         include_once "../app/view/org_dashboard.php";
     } elseif ($parts[1] === "voter") {
         include_once "../app/view/voter_dashboard.php";
+    }else{
+        header("Location: /logout");
+        exit();
     }
 }
 
@@ -20,10 +23,9 @@ if (isset($_SESSION["user"])) {
     if ($is_logged){
         redirect();
     }else{
-        header("Location: login");
+        header("Location: /login");
         exit();
     }
-
 }
 
 

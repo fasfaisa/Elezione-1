@@ -8,5 +8,5 @@ $is_logged = false;
 if(isset($_COOKIE["login_token"])){
     $token = $_COOKIE["login_token"];
     $user = new User();
-    $is_logged = $user->login_with_cookie($con , $token);
+    $is_logged = $user->loginWithCookie($con , $token);
 }

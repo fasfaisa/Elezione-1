@@ -142,7 +142,7 @@ class User
         $pstmt->execute();
     }
 
-    public function login_with_cookie($connection , $token): bool
+    public function loginWithCookie($connection , $token): bool
     {
         $query = "select userID , userType  from user where loginToken = ?";
         $pstmt = $connection->prepare($query);

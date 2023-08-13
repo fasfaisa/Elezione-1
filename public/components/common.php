@@ -6,3 +6,6 @@
 
 <!--favicon-->
 <link rel="icon" href="/favicon.ico" />
+
+<!--sweet animations-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

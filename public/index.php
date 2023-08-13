@@ -61,6 +61,9 @@ $app->post("/login_process", function () {
 $app->post("/register_process", function () {
     Controller::post_router("register_process");
 });
+$app->post("/voter_account_process", function () {
+    Controller::post_router("voter_account_process");
+});
 
 $app->set404(function () {
     Controller::get_router("404");

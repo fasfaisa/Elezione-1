@@ -14,7 +14,8 @@ class User
     private $password;
     private $userType;
     private $verificationCode;
-    private string $verificationStatus = "Unverified";
+    private $verificationStatus = "Unverified";
+    private $userID;
 
     public function __construct()
     {
@@ -142,6 +143,21 @@ class User
         $pstmt->execute();
     }
 
+    public function loadData($connection , $userId): void
+    {
+        $query = "select *  from user where userID = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $userId);
+        $pstmt->execute();
+        $result = $pstmt->fetch(PDO::FETCH_OBJ);
+        $this->userID = $userId;
+        $this->name = $result->name;
+        $this->password = $result->password;
+        $this->email =$result->email;
+        $this->verificationStatus = $result->verificationStatus;
+        $this->userType = $result->userType;
+    }
+
     public function loginWithCookie($connection , $token): bool
     {
         $query = "select userID , userType  from user where loginToken = ?";
@@ -155,6 +171,60 @@ class User
         $_SESSION["user"] = $result->userID."@".$result->userType;
         return true;
     }
+
+    public function updateEmail($connection , $email , $userID): void
+    {
+        $query = "update user set email = ? where userID = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $email);
+        $pstmt->bindValue(2, $userID);
+        $pstmt->execute();
+    }
+    public function updateName($connection , $name , $userID): void
+    {
+        $query = "update user set name = ? where userID = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $name);
+        $pstmt->bindValue(2, $userID);
+        $pstmt->execute();
+    }
+
+    public function updatePassword($connection , $password , $userID): void
+    {
+        $query = "update user set password = ? where userID = ?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $password);
+        $pstmt->bindValue(2, $userID);
+        $pstmt->execute();
+    }
+
+    public function changeToOrganizer($connection , $package , $poll , $user , $renew): void
+    {
+        $query = "insert into organization (packagetype , pollCount , userID , paymentRenewDate) values(?,?,?,?)";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, $package);
+        $pstmt->bindValue(2, $poll);
+        $pstmt->bindValue(3, $user);
+        $pstmt->bindValue(4, $renew);
+        $pstmt->execute();
+
+        $query = "update user set userType = ? where userID =?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, "organizer");
+        $pstmt->bindValue(2, $user);
+        $pstmt->execute();
+        $_SESSION["user"] = $user."@"."organizer";
+    }
+
+    public function changeAccountStatus($connection , $user): void
+    {
+        $query = "update user set verificationStatus = ? where userID =?";
+        $pstmt = $connection->prepare($query);
+        $pstmt->bindValue(1, "Deleted");
+        $pstmt->bindValue(2, $user);
+        $pstmt->execute();
+    }
+
     /**
      * getters
      */
@@ -186,4 +256,11 @@ class User
         $pstmt->execute();
         return $pstmt->fetch(PDO::FETCH_OBJ)->userID;
     }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
 }
